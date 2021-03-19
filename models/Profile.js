@@ -1,5 +1,3 @@
-const { truncate } = require('fs/promises');
-const { stubTrue } = require('lodash');
 const mongoose = require('mongoose');
 
 const ProfileSchema = new mongoose.Schema({

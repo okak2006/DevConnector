@@ -14,15 +14,15 @@ const User = require('../../models/User')
 
 //Note to self: in many cases these middlewares are organized into policies.
 //Here we are using express-validator/check, but other validation libraries like joi are also common
+//Common password check: check('password', 'Your password must be at least 8 characters, contain special characters, and have lower and upper case alphabet')
+//.matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
 
 router.post('/', [
     check('name', 'Name is required')
         .not()
         .isEmpty(),
     check('email', 'Invalid email')
-        .normalizeEmail()
-        .isEmail()
-    ,
+        .isEmail(),
     check('password', 'Your password must be at least 8 characters, contain special characters, and have lower and upper case alphabet')
         .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
 ], async (req, res)=>{
