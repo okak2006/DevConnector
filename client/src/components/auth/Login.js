@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
-import api from '../../apis/api';
+// import api from '../../apis/api';
 
 export const Login = () => {
     const [formData, setFormData] = useState({
