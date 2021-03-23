@@ -53,7 +53,7 @@ router.post('/', [
                 return res.status(400).json({ errors: [ {msg: 'User does not exist or there is no matching credentials'} ]});
             }
 
-        // Return jsonwebtoken so user stays signed in
+            // Return jsonwebtoken so user stays signed in
             const payload = {
                 user: {id: user.id}
             };
