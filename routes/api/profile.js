@@ -5,6 +5,7 @@ const config = require('config');
 const auth = require('../../middleware/auth');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const Post = require('../../models/Post');
 const { check, validationResult } = require('express-validator');
 
 //@route    GET api/profile/me
@@ -138,6 +139,7 @@ router.delete('/', auth, async (req, res) => {
     try{
         await Profile.findOneAndRemove({ user: req.user.id});
         // To-do: remove posts of users
+        await Post.deleteMany({ user: req.user.id });
         // Remember user does not have id defined in schema but db auto-creates _id for all documents
         await User.findOneAndRemove({ _id: req.user.id});
         res.json({ msg: 'User removed '});
