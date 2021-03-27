@@ -14,7 +14,13 @@ const Navbar = ({ auth, logout }) => {
                 </a>
             </li>
             <li><Link to="/register">Register</Link></li>
-            <li><Link to="/login">Logout</Link></li>
+            <li><Link to="/login">Login</Link></li>
+            <li>
+                <Link to="/dashboard">
+                    <i className="fas fa-user" />{' '}
+                    <span className="hide-sm">Dashboard</span>
+                </Link>
+            </li>
         </ul>
     )
 

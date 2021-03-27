@@ -5,10 +5,12 @@ import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
-import Dashboard from './components/dashboard/dashboard';
+import Dashboard from './components/dashboard/Dashboard';
+import CreateProfile from './components/profile-forms/CreateProfile';
 import Alert from './components/layout/alert';
 import setAuthToken from './utils/setAuthToken';
 import { loadUser } from './actions/auth';
+import PrivateRoute from './components/routing/PrivateRoute';
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -29,6 +31,7 @@ const App = () => {
       <Router>
         <Fragment>
           <Navbar />
+          {/* Route renders UI based on URL */}
           <Route exact path="/" component={ Landing }/>
           {/* container class  pushes things to the middle */}
           <section className="container">
@@ -37,7 +40,9 @@ const App = () => {
             <Switch>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/dashboard" component={Dashboard} />
+              {/* custom functional component for private route */}
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/create-profile" component={CreateProfile} />
             </Switch>
           </section>
         </Fragment>
